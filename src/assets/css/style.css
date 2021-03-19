@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  background-color: #000 !important;
+}
+
+.handsfree-debugger {
+  position: fixed !important;
+  right: 15px;
+  bottom: 15px;
+  width: 180px;
+  height: 150px;
+}
+
+.handsfree-pointer {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: rgb(224, 224, 224);
+  border: 1.5px dashed rgb(255, 255, 255);
+  padding: 3px;
+  background-clip: content-box;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  opacity: 1;
+  transition: all 250ms;
+  display: none;
+  animation: rotating 2s linear infinite;
+}
+
+.handsfree-video {
+  position: fixed !important;
+  right: 15px;
+  bottom: 0px;
+  width: 180px;
+  height: 150px;
+}
+
+.handsfree-canvas .handsfree-canvas-video .handsfree-hide-when-started-without-video{
+  position: fixed !important;
+  right: 15px;
+  bottom: 0px;
+  width: 180px;
+  height: 150px;
+}
+
+.swiper .swiper-pagination .swiper-pagination-bullet {
+  background-color: white !important;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+} 
+
+.text-1 {
+  font-family: "Monument Extended";
+  position: relative;
+  top:0;
+  left: -5%;
+  color: white;
+}
+
+.text-2 {
+  font-family: "Monument Extended";
+  position: relative;
+  top: 0;
+
+  left: -5%;
+  color: white;
+}
