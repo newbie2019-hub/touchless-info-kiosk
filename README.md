@@ -16,8 +16,8 @@ npm run build
 ```
 
 ### References
-Tensorflow JS Handpose Model. [Link](https://www.npmjs.com/package/@tensorflow-models/handpose)
-Handsfree JS [Link](http://handsfree.js.org/)
+Tensorflow JS Handpose Model. [Link](https://www.npmjs.com/package/@tensorflow-models/handpose) <br/>
+Handsfree JS [Link](http://handsfree.js.org/) <br/>
 Fingerpose [Link](https://github.com/andypotato/fingerpose)
 
 ### Customize configuration
