@@ -1,4 +1,4 @@
-# info-kiosk-touchless
+# Touchless Information Kiosk
 
 ## Project setup
 ```
@@ -15,10 +15,10 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### References
+Tensorflow JS Handpose Model. [Link](https://www.npmjs.com/package/@tensorflow-models/handpose)
+Handsfree JS [Link](http://handsfree.js.org/)
+Fingerpose [Link](https://github.com/andypotato/fingerpose)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
