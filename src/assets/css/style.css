@@ -19,9 +19,9 @@ body {
   border-radius: 50%;
   background: rgb(224, 224, 224);
   border: 1.5px dashed rgb(255, 255, 255);
-  padding: 3px;
+  padding: 8px;
   background-clip: content-box;
-  position: fixed !important;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999999;
@@ -30,6 +30,7 @@ body {
   display: none;
   animation: rotating 2s linear infinite;
 }
+
 
 .handsfree-video {
   position: fixed !important;
@@ -76,4 +77,68 @@ body {
 
   left: -5%;
   color: white;
+}
+
+.custom-button {
+  position: relative;
+  padding: 8px 28px;
+  color: #21ebff;
+  text-decoration: none;
+  transition: 0.5s;
+  overflow: hidden;
+  -webkit-box-reflect: below 2px linear-gradient(transparent, #0003);
+}
+
+.custom-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid #21ebff;
+  border-left: 2px solid #21ebff;
+  transition: 0.5s;
+}
+
+.custom-button:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #21ebff;
+  border-right: 2px solid #21ebff;
+  transition: 0.5s;
+}
+
+.custom-button:hover{
+  text-decoration: none;
+  color: white;
+  background: #21ebff;
+  box-shadow: 0 0 50px #21ebff;
+  transition-delay: 0.4s;
+}
+
+.custom-button:hover:before {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-button:hover:after {
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  -webkit-box-reflect: bottom 1px linear-gradient(transparent, rgba(255, 255, 255, 0.2)) !important;
+}
+
+.VueCarousel-wrapper {
+  overflow: visible !important;
+}
+
+.text-light-yellow {
+  color: rgb(255, 209, 82);
 }

@@ -7,6 +7,8 @@ handsfree.start()
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
   handsfree.plugin.pinchScroll.enable()
+
+ 
 })
 
 /**
@@ -26,12 +28,14 @@ handsfree.use('pinchClick', ({ hands }) => {
   if (!hands.multiHandLandmarks) return
 
   hands.pointer.forEach((pointer, hand) => {
+
     if (pointer.isVisible && hands.pinchState[hand][0] === 'start') {
       const $el = document.elementFromPoint(pointer.x, pointer.y)
 
       for (let i = 1; i < mousepointer.length; i++) {
         mousepointer[i].style.width = '35px';
         mousepointer[i].style.height = '35px';
+        mousepointer[i].style.padding = '8px';
       }
 
       if ($el) {
@@ -86,16 +90,6 @@ handsfree.use('pinchClick', ({ hands }) => {
       const $el = document.elementFromPoint(pointer.x, pointer.y)
 
       if ($el) {
-        // $el.dispatchEvent(
-        //   new MouseEvent('mouseleave', {
-        //     bubbles: true,
-        //     cancelable: true,
-        //     clientX: pointer.x,
-        //     clientY: pointer.y,
-        //     pageX: pointer.x,
-        //     pageY: pointer.y,
-        //   })
-        // )
         $el.dispatchEvent(
           new MouseEvent('mouseup', {
             bubbles: true,
@@ -111,6 +105,50 @@ handsfree.use('pinchClick', ({ hands }) => {
       for (let i = 1; i < mousepointer.length; i++) {
         mousepointer[i].style.width = '27px';
         mousepointer[i].style.height = '27px';
+        mousepointer[i].style.padding = '8px';
+      }
+    }
+    else if(pointer.isVisible){
+      const $el = document.elementFromPoint(pointer.x, pointer.y)
+ 
+      if ($el) {
+        $el.dispatchEvent(
+          new MouseEvent('mouseenter', {
+            bubbles: true,
+            view: window,
+            cancelable: true,
+            clientX: pointer.x,
+            clientY: pointer.y,
+            pageX: pointer.x,
+            pageY: pointer.y,
+          })
+        )
+
+        $el.dispatchEvent(
+          new MouseEvent('mouseover', {
+            bubbles: true,
+            view: window,
+            cancelable: true,
+            clientX: pointer.x,
+            clientY: pointer.y,
+            pageX: pointer.x,
+            pageY: pointer.y,
+          })
+        )
+
+        $el.dispatchEvent(
+          new MouseEvent('mousemove', {
+            bubbles: true,
+            view: window,
+            cancelable: true,
+            clientX: pointer.x,
+            clientY: pointer.y,
+            pageX: pointer.x,
+            pageY: pointer.y,
+          })
+        )
+
+       
       }
     }
     
