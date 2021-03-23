@@ -5,6 +5,10 @@ body {
   background-color: #000 !important;
 }
 
+p {
+  margin-bottom: 0  !important;
+}
+
 .handsfree-debugger {
   position: fixed !important;
   right: 15px;
@@ -14,8 +18,8 @@ body {
 }
 
 .handsfree-pointer {
-  width: 27px;
-  height: 27px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background: rgb(224, 224, 224);
   border: 1.5px dashed rgb(255, 255, 255);
@@ -40,14 +44,6 @@ body {
   height: 150px;
 }
 
-.handsfree-canvas .handsfree-canvas-video .handsfree-hide-when-started-without-video{
-  position: fixed !important;
-  right: 15px;
-  bottom: 0px;
-  width: 180px;
-  height: 150px;
-}
-
 .swiper .swiper-pagination .swiper-pagination-bullet {
   background-color: white !important;
 }
@@ -62,22 +58,6 @@ body {
   }
 } 
 
-.text-1 {
-  font-family: "Monument Extended";
-  position: relative;
-  top:0;
-  left: -5%;
-  color: white;
-}
-
-.text-2 {
-  font-family: "Monument Extended";
-  position: relative;
-  top: 0;
-
-  left: -5%;
-  color: white;
-}
 
 .custom-button {
   position: relative;
@@ -86,6 +66,7 @@ body {
   text-decoration: none;
   transition: 0.5s;
   overflow: hidden;
+  color: white;
   -webkit-box-reflect: below 2px linear-gradient(transparent, #0003);
 }
 
@@ -94,10 +75,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  border-top: 2px solid #21ebff;
-  border-left: 2px solid #21ebff;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
   transition: 0.5s;
 }
 
@@ -106,39 +87,92 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 100%;
-  height: 100%;
-  border-bottom: 2px solid #21ebff;
-  border-right: 2px solid #21ebff;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #fdffff;
+  border-right: 2px solid #fcfcfc;
   transition: 0.5s;
 }
 
 .custom-button:hover{
   text-decoration: none;
-  color: white;
-  background: #21ebff;
-  box-shadow: 0 0 50px #21ebff;
+  color: rgb(255, 209, 82);
   transition-delay: 0.4s;
 }
 
-.custom-button:hover:before {
-  width: 100%;
-  height: 100%;
-}
-
-.custom-button:hover:after {
-  width: 100%;
-  height: 100%;
-}
-
 .card {
-  -webkit-box-reflect: bottom 1px linear-gradient(transparent, rgba(255, 255, 255, 0.2)) !important;
+  border: none !important;
+  background-color: #000 !important;
+  color: white;
+  line-height: 1.2rem;
+  max-width: 300px;
+}
+
+.card img {
+  -webkit-box-reflect: below 0px linear-gradient(transparent, rgba(0, 0, 0, 0.452));
+}
+
+.card-title {
+  position: absolute;
+  bottom: 3%;
+  left: 5%;
+}
+
+.text-light-yellow {
+  color: rgb(255, 209, 82);
+}
+
+.heading-h1 {
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 3.1rem;
 }
 
 .VueCarousel-wrapper {
   overflow: visible !important;
 }
 
-.text-light-yellow {
-  color: rgb(255, 209, 82);
+.VueCarousel-dot--active {
+  background-color: #ffd152 !important;
+}
+
+/* STICK HERO */
+#score {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2em;
+  font-weight: 900;
+}
+
+#introduction {
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  font-weight: 600;
+  font-size: 0.8em;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  transition: opacity 2s;
+}
+
+#restart {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  border-radius: 50%;
+  color: white;
+  background-color: red;
+  border: none;
+  font-weight: 700;
+  font-size: 1.2em;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: none;
+  cursor: pointer;
+}
+
+#perfect {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 2s;
 }

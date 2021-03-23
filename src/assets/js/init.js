@@ -6,21 +6,18 @@ handsfree.start()
 
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
-  handsfree.plugin.pinchScroll.enable()
-
- 
+  // handsfree.plugin.pinchScroll.enable()
 })
 
 /**
  * Pinch Click
  */
-
 let mousepointer = document.querySelectorAll('.handsfree-pointer');
 
 if(mousepointer){
   for (let i = 1; i < mousepointer.length; i++) {
-    mousepointer[i].style.width = '27px';
-    mousepointer[i].style.height = '27px';
+    mousepointer[i].style.width = '35px';
+    mousepointer[i].style.height = '35px';
   }
 }
 
@@ -33,8 +30,8 @@ handsfree.use('pinchClick', ({ hands }) => {
       const $el = document.elementFromPoint(pointer.x, pointer.y)
 
       for (let i = 1; i < mousepointer.length; i++) {
-        mousepointer[i].style.width = '35px';
-        mousepointer[i].style.height = '35px';
+        mousepointer[i].style.width = '45px';
+        mousepointer[i].style.height = '45px';
         mousepointer[i].style.padding = '8px';
       }
 
@@ -103,8 +100,8 @@ handsfree.use('pinchClick', ({ hands }) => {
       }
 
       for (let i = 1; i < mousepointer.length; i++) {
-        mousepointer[i].style.width = '27px';
-        mousepointer[i].style.height = '27px';
+        mousepointer[i].style.width = '35px';
+        mousepointer[i].style.height = '35px';
         mousepointer[i].style.padding = '8px';
       }
     }
@@ -147,11 +144,50 @@ handsfree.use('pinchClick', ({ hands }) => {
             pageY: pointer.y,
           })
         )
-
-       
+        
       }
     }
-    
 
   })
 })
+
+
+//DRAWING
+const canvas = document.querySelector('#canvas');
+if(canvas){
+  window.addEventListener('load', () => {
+    const ctx = canvas.getContext('2d');
+
+      //Resizing
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+
+      let painting = false;
+
+      function startPosition(e){
+        painting = true;
+        draw(e)
+      }
+
+      function finishedPosition(){
+        painting = false;
+        ctx.beginPath();
+      }
+
+      function draw(e){
+        if(!painting) return
+        ctx.lineWidth = 10;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = "white";
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(e.clientX, e.clientY);
+      }
+
+      canvas.addEventListener("mousedown", startPosition)
+      canvas.addEventListener("mouseup", finishedPosition)
+      canvas.addEventListener("mousemove", draw);
+    
+  });
+}
