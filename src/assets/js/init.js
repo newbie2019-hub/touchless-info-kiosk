@@ -1,8 +1,8 @@
 import Handsfree from 'handsfree'
 
 //HANDSFREE 
-const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false })
-handsfree.start()
+const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.8, minTrackingConfidence: 0.8 })
+// handsfree.start()
 
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
@@ -36,14 +36,6 @@ handsfree.use('pinchClick', ({ hands }) => {
       }
 
       if ($el) {
-        $el.dispatchEvent(
-          new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            clientX: pointer.x,
-            clientY: pointer.y
-          })
-        )
         $el.dispatchEvent(
           new MouseEvent('mousedown', {
             bubbles: true,
@@ -95,6 +87,15 @@ handsfree.use('pinchClick', ({ hands }) => {
             clientY: pointer.y,
             pageX: pointer.x,
             pageY: pointer.y,
+          })
+        )
+
+        $el.dispatchEvent(
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            clientX: pointer.x,
+            clientY: pointer.y
           })
         )
       }
@@ -152,42 +153,3 @@ handsfree.use('pinchClick', ({ hands }) => {
 })
 
 
-//DRAWING
-const canvas = document.querySelector('#canvas');
-if(canvas){
-  window.addEventListener('load', () => {
-    const ctx = canvas.getContext('2d');
-
-      //Resizing
-      canvas.height = window.innerHeight;
-      canvas.width = window.innerWidth;
-
-      let painting = false;
-
-      function startPosition(e){
-        painting = true;
-        draw(e)
-      }
-
-      function finishedPosition(){
-        painting = false;
-        ctx.beginPath();
-      }
-
-      function draw(e){
-        if(!painting) return
-        ctx.lineWidth = 10;
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = "white";
-        ctx.lineTo(e.clientX, e.clientY);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(e.clientX, e.clientY);
-      }
-
-      canvas.addEventListener("mousedown", startPosition)
-      canvas.addEventListener("mouseup", finishedPosition)
-      canvas.addEventListener("mousemove", draw);
-    
-  });
-}

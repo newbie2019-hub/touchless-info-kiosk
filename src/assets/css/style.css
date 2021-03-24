@@ -109,7 +109,7 @@ p {
 }
 
 .card img {
-  -webkit-box-reflect: below 0px linear-gradient(transparent, rgba(0, 0, 0, 0.452));
+  -webkit-box-reflect: below 2px linear-gradient(transparent, rgba(0, 0, 0, 0.252));
 }
 
 .card-title {
@@ -134,45 +134,4 @@ p {
 
 .VueCarousel-dot--active {
   background-color: #ffd152 !important;
-}
-
-/* STICK HERO */
-#score {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 2em;
-  font-weight: 900;
-}
-
-#introduction {
-  width: 200px;
-  height: 150px;
-  position: absolute;
-  font-weight: 600;
-  font-size: 0.8em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  transition: opacity 2s;
-}
-
-#restart {
-  width: 120px;
-  height: 120px;
-  position: absolute;
-  border-radius: 50%;
-  color: white;
-  background-color: red;
-  border: none;
-  font-weight: 700;
-  font-size: 1.2em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  display: none;
-  cursor: pointer;
-}
-
-#perfect {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 2s;
 }

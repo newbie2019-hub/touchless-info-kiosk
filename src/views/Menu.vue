@@ -1,58 +1,69 @@
 <template>
-  <div class="container-fluid p-0 m-0" style="height: 100vh; background: #000">
-    <div class="row h-100 justify-content-center align-items-center p-5">
-    
-      <carousel :paginationEnabled='false' :perPage="3" :loop="true" :scrollPerPage="false">
-        <slide>
-          <div class="col-md-10 col-lg-10">
+  <div class="container-fluid d-flex align-items-center p-0 m-0" style="height: 100vh; background: #000">
+    <div class="" style="padding-top: 15%;">
+      <splide :options="options">
+        <splide-slide>
+          <div class="col-md-9 col-lg-8 ">
             <p class="heading-h1 text-light-yellow mt-5">Menu.</p>
             <h4 class="text-light-yellow mt-4">Pinch and swipe left to see more options. 🠔</h4>
           </div>
-        </slide>
-        <slide>
-          <div class="card" v-tilt>
-            <img src="@/assets/images/entertainment.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <router-link to="/entertainment"><h2 class="card-title">Entertainment.</h2></router-link>
+        </splide-slide>
+        <splide-slide>
+          <router-link to="/entertainment">
+            <div class="card" v-tilt>
+              <img src="@/assets/images/entertainment.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
+              <h2 class="card-title">Entertainment.</h2>
+            </div>
+          </router-link>
+        </splide-slide>
+        <splide-slide>
+           <div class="card" v-tilt>
+            <img src="@/assets/images/info.jpg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
+           <h1 class="card-title">Demo 2</h1>
           </div>
-        </slide>
-        <slide>
-          <div class="card" v-tilt>
-            <img src="@/assets/images/img-one.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <h1 class="card-title">Demo 2</h1>
-          </div>
-        </slide>
-        <slide>
+        </splide-slide>
+        <splide-slide>
           <div class="card" v-tilt>
             <img src="@/assets/images/img-two.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <h1 class="card-title">Demo 3</h1>
           </div>
-        </slide>
-        <slide>
+        </splide-slide>
+        <splide-slide>
           <div class="card" v-tilt>
             <img src="@/assets/images/img-three.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <h1 class="card-title">Demo 4</h1>
           </div>
-        </slide>
-        <slide>
+        </splide-slide>
+        <splide-slide>
           <div class="card" v-tilt>
             <img src="@/assets/images/img-one.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <h1 class="card-title">Demo 5</h1>
           </div>
-        </slide>
-        <slide>
-          <div class="card" v-tilt>
-            <img src="@/assets/images/img-two.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <h1 class="card-title">Demo 6</h1>
-          </div>
-        </slide>
-      </carousel>
+        </splide-slide>
+      </splide>
     </div>
+   
     <p class="info-text">Tap the text to select the card.</p>
   </div>
 </template>
 <script>
 export default {
   name: "Home",
+   data() {
+    return {
+      options: {
+        rewind : false,
+        width  : '100vw',
+        height: '100vh',
+        autoWidth: true,
+        perPage: 2,
+        gap    : '3rem',
+        padding: '6rem',
+        pagination: false,
+        arrows: false,
+      },
+    }
+  },
   mounted() {
     document.title = "Main Menu";
   },
