@@ -17,10 +17,15 @@ p {
   height: 150px;
 }
 
+.handsfree-video {
+  filter: brightness(70%);
+}
+
 .handsfree-pointer {
   width: 35px;
   height: 35px;
   border-radius: 50%;
+  color: white;
   background: rgb(224, 224, 224);
   border: 1.5px dashed rgb(255, 255, 255);
   padding: 8px;

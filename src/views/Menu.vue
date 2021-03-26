@@ -40,14 +40,17 @@
         </splide-slide>
       </splide>
     </div>
-   
     <p class="info-text">Tap the text to select the card.</p>
   </div>
 </template>
 <script>
+
 export default {
   name: "Home",
-   data() {
+  components: {
+    
+  },
+  data() {
     return {
       options: {
         rewind : false,

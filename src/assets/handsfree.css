@@ -34,20 +34,20 @@ body.handsfree-started.handsfree-hide-debug .handsfree-hide-when-not-debugging {
 }
 .handsfree-canvas {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100% !important;
-  height: auto !important;
+  right: 15px;
+  bottom: 15px;
+  width: 180px;
+  height: 150px;
 }
 .handsfree-canvas:last-child {
   position: relative;
 }
 .handsfree-canvas-webgl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: auto;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  width: 180px;
+  height: 150px;
   margin-left: 50%;
   transform: translate(-50%) scale(-1, 1);
 }
