@@ -1,7 +1,7 @@
 import Handsfree from 'handsfree'
-
+import router from '../../router'
 //HANDSFREE 
-const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.9, minTrackingConfidence: 0.9,  assetsPath: `${window.location.origin}/assets`, })
+const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.8, minTrackingConfidence: 0.75,  assetsPath: `${window.location.origin}/assets`, })
 handsfree.start()
 
 handsfree.use('logger', () => {
@@ -151,5 +151,126 @@ handsfree.use('pinchClick', ({ hands }) => {
 
   })
 })
+
+/** 
+ * ------------------------
+ * 
+ * RETURN GESTURE
+ * 
+ * ------------------------
+ *
+ */
+
+handsfree.useGesture({
+  "name": "return",
+  "algorithm": "fingerpose",
+  "models": "hands",
+  "confidence": "8",
+  "description": [
+    [
+      "addCurl",
+      "Thumb",
+      "NoCurl",
+      1
+    ],
+    [
+      "addDirection",
+      "Thumb",
+      "DiagonalUpRight",
+      1
+    ],
+    [
+      "addCurl",
+      "Index",
+      "NoCurl",
+      1
+    ],
+    [
+      "addDirection",
+      "Index",
+      "HorizontalRight",
+      1
+    ],
+    [
+      "addCurl",
+      "Middle",
+      "NoCurl",
+      1
+    ],
+    [
+      "addDirection",
+      "Middle",
+      "HorizontalRight",
+      1
+    ],
+    [
+      "addCurl",
+      "Ring",
+      "NoCurl",
+      1
+    ],
+    [
+      "addDirection",
+      "Ring",
+      "HorizontalRight",
+      1
+    ],
+    [
+      "addCurl",
+      "Pinky",
+      "NoCurl",
+      1
+    ],
+    [
+      "addDirection",
+      "Pinky",
+      "HorizontalRight",
+      1
+    ]
+  ],
+  "enabled": true
+})
+
+/**
+ * -------------------
+ * 
+ *        TIMER
+ * 
+ * -------------------
+ */
+
+let return_timer = null;
+let flag = false;
+
+handsfree.use('return', ({ hands }) => {
+  if (!hands.multiHandLandmarks) return
+  
+  if(hands.gesture[1] == null) {
+    clearTimeout(return_timer)
+    return_timer = null
+  }
+
+  if(hands.gesture[1] != null){
+    if(hands.gesture[1].name == 'return') {
+      returnPrev()
+      flag = true
+    }
+    else {
+      clearTimeout(return_timer)
+      return_timer = null
+      flag = false
+    }
+  }
+
+});
+
+function returnPrev(){
+  if(flag) return
+
+  return_timer = window.setTimeout(()=>{
+    router.go(-1);
+  }, 3000)
+}
+
 
 
