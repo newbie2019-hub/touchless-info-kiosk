@@ -3,23 +3,21 @@
     <div class="" style="padding-top: 15%;">
       <splide :options="options">
         <splide-slide>
-          <div class="col-md-9 col-lg-8 ">
+          <div class="col-md-9 col-lg-10">
             <p class="heading-h1 text-light-yellow mt-5">Menu.</p>
             <h4 class="text-light-yellow mt-4">Pinch and swipe left to see more options. 🠔</h4>
           </div>
         </splide-slide>
         <splide-slide>
-          <router-link to="/entertainment">
-            <div class="card" v-tilt>
-              <img src="@/assets/images/entertainment.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-              <h2 class="card-title">Entertainment.</h2>
-            </div>
-          </router-link>
+          <div class="card" v-tilt>
+            <img src="@/assets/images/entertainment.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
+            <router-link to="/entertainment"><h2 class="card-title">Entertainment</h2></router-link>
+          </div>
         </splide-slide>
         <splide-slide>
            <div class="card" v-tilt>
-            <img src="@/assets/images/info.jpg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-           <h1 class="card-title">Demo 2</h1>
+            <img src="@/assets/images/covid19.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
+           <h2 class="card-title">Covid-19</h2>
           </div>
         </splide-slide>
         <splide-slide>

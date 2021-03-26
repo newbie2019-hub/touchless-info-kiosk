@@ -1,8 +1,8 @@
 import Handsfree from 'handsfree'
 
 //HANDSFREE 
-const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.8, minTrackingConfidence: 0.8 })
-// handsfree.start()
+const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.9, minTrackingConfidence: 0.9,  assetsPath: `${window.location.origin}/assets`, })
+handsfree.start()
 
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')

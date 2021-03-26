@@ -2,7 +2,7 @@
   <div>
     <div class="container-fluid p-0 m-0" style="height: 100vh; background: #000">
       <div class="row h-100 justify-content-center align-items-center w-100">
-        <swiper loop >
+        <swiper >
           <div class="row h-100 justify-content-center align-items-center w-100 p-0 m-0" >
             <div class="col-md-10 col-lg-7">
               <p class="heading-h1 font-weight-bold text-light-yellow" v-tilt>Touch-less interaction in a Post-Covid-19 World.</p>

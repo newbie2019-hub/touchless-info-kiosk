@@ -109,7 +109,7 @@ p {
 }
 
 .card img {
-  -webkit-box-reflect: below 2px linear-gradient(transparent, rgba(0, 0, 0, 0.252));
+  -webkit-box-reflect: below 2px linear-gradient(rgba(0, 0, 0, 0.212), rgba(0, 0, 0, 0.384));
 }
 
 .card-title {

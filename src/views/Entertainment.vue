@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid d-flex align-items-center p-0 m-0" style="height: 100vh; background: #000">
-    <div class="" style="padding-top: 15%;">
+    <div class="" style="margin-top: 15%;">
       <splide :options="options">
         <splide-slide>
           <div class="col-md-9 col-lg-8 ">
@@ -53,8 +53,8 @@ export default {
         height: '100vh',
         autoWidth: true,
         perPage: 2,
-        gap    : '3rem',
-        padding: '6rem',
+        gap    : '5rem',
+        padding: '3rem',
         pagination: false,
         arrows: false,
       },
