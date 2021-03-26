@@ -1,7 +1,7 @@
 import Handsfree from 'handsfree'
 import router from '../../router'
 //HANDSFREE 
-const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.8, minTrackingConfidence: 0.75,  assetsPath: `${window.location.origin}/assets`, })
+const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.75, assetsPath: `${window.location.origin}/assets`, })
 handsfree.start()
 
 handsfree.use('logger', () => {
@@ -145,8 +145,28 @@ handsfree.use('pinchClick', ({ hands }) => {
             pageY: pointer.y,
           })
         )
+
+        $el.dispatchEvent(
+          new MouseEvent('mouseup', {
+            bubbles: true,
+            view: window,
+            cancelable: true,
+            clientX: pointer.x,
+            clientY: pointer.y,
+            pageX: pointer.x,
+            pageY: pointer.y,
+          })
+        )
         
       }
+
+      for (let i = 1; i < mousepointer.length; i++) {
+        mousepointer[i].style.width = '35px';
+        mousepointer[i].style.height = '35px';
+        mousepointer[i].style.padding = '8px';
+      }
+
+
     }
 
   })

@@ -9,31 +9,31 @@
           </div>
         </splide-slide>
         <splide-slide>
-          <div class="card" v-tilt>
+          <div class="card" v-tilt="{perspective: 800,}">
             <img src="@/assets/images/entertainment.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <router-link to="/entertainment"><h2 class="card-title">Entertainment</h2></router-link>
           </div>
         </splide-slide>
         <splide-slide>
-           <div class="card" v-tilt>
+           <div class="card" v-tilt="{perspective: 800}">
             <img src="@/assets/images/covid19.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
            <h2 class="card-title">Covid-19</h2>
           </div>
         </splide-slide>
         <splide-slide>
-          <div class="card" v-tilt>
+          <div class="card" v-tilt="{perspective: 800}">
             <img src="@/assets/images/img-two.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <h1 class="card-title">Demo 3</h1>
           </div>
         </splide-slide>
         <splide-slide>
-          <div class="card" v-tilt>
+          <div class="card" v-tilt="{perspective: 800}">
             <img src="@/assets/images/img-three.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <h1 class="card-title">Demo 4</h1>
           </div>
         </splide-slide>
         <splide-slide>
-          <div class="card" v-tilt>
+          <div class="card" v-tilt="{perspective: 800}">
             <img src="@/assets/images/img-one.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
             <h1 class="card-title">Demo 5</h1>
           </div>
