@@ -16,8 +16,8 @@
                   <div class="col-md-10 col-lg-7">
                     <p class="heading-h1 font-weight-bold text-light-yellow" v-tilt style="">Use your right hand for navigation.</p>
                     <h4 class="text-white mt-5"> Please use slow hand movements for more accuracy.</h4>
-                    <p class="text-white mt-5 font-weight-light"><small>These experiments are made possible by <a
-                  href="https://www.npmjs.com/package/@tensorflow-models/handpose"  class="text-warning">Tensorflow JS Handpose</a> model.</small></p>
+                    <p class="text-white mt-5 font-weight-light"><small>Powered by <a
+                  href="https://www.npmjs.com/package/@mediapipe/hands" class="text-warning">MediaPipe's Hands</a></small></p>
                   </div>
                 </div>
               </div>
