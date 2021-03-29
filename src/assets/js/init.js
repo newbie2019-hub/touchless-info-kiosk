@@ -1,9 +1,8 @@
 import Handsfree from 'handsfree'
 import router from '../../router'
 //HANDSFREE 
-const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.95, assetsPath: `${window.location.origin}/assets`, })
+const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.95, })
 handsfree.start()
-
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
   // handsfree.plugin.pinchScroll.enable()
@@ -17,7 +16,6 @@ let mousepointer = document.querySelectorAll('.handsfree-pointer');
 
 if(mousepointer){
   for (let i = 1; i < mousepointer.length; i++) {
-    mousepointer.innerHTML += 'Hello'
     mousepointer[i].style.width = '35px';
     mousepointer[i].style.height = '35px';
   }
@@ -25,7 +23,6 @@ if(mousepointer){
 
 handsfree.use('pinchClick', ({ hands }) => {
   if (!hands.multiHandLandmarks) return
-
   hands.pointer.forEach((pointer, hand) => {
 
     if (pointer.isVisible && hands.pinchState[hand][0] === 'start') {

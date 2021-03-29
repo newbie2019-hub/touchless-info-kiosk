@@ -1,55 +1,70 @@
 <template>
   <div>
-    <canvas id="canvas"></canvas>
+    <div class="container-fluid" style="height: 100vh">
+      <canvas class="drawcanvas" ref="drawcanvas" id="drawcanvas" @mousedown="startPosition" @mouseup="finishedPosition" @mousemove="draw"></canvas>
+      <div class="color-container align-items-center justify-content-center">
+        <div class="d-block">
+          <p class="text-white">Color</p>
+          <v-swatches v-model="color"></v-swatches>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import VSwatches from 'vue-swatches'
+import 'vue-swatches/dist/vue-swatches.css'
 export default {
-  created(){
-    window.addEventListener('load', () => {
-      const canvas = document.querySelector('#canvas');
-      const ctx = canvas.getContext('2d');
-
-        //Resizing
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
-
-        let painting = false;
-
-        function startPosition(e){
-          painting = true;
-          draw(e)
-        }
-
-        function finishedPosition(){
-          painting = false;
-          ctx.beginPath();
-        }
-
-        function draw(e){
-          if(!painting) return
-          ctx.lineWidth = 10;
-          ctx.lineCap = 'round';
-          ctx.strokeStyle = "white";
-          ctx.lineTo(e.clientX, e.clientY);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(e.clientX, e.clientY);
-        }
-
-        canvas.addEventListener("mousedown", startPosition)
-        canvas.addEventListener("mouseup", finishedPosition)
-        canvas.addEventListener("mousemove", draw);
-      
-    });
+  components: { VSwatches },
+  data() {
+    return {
+      painting: false,
+      ctx: '',
+      color: 'white',
+    }
   },
   mounted() {
-    
+   const canvas = document.querySelector('#drawcanvas');
+   canvas.setAttribute('width', window.innerWidth)
+   canvas.setAttribute('height', window.innerHeight)
+   const ctx_i = canvas.getContext('2d');
+
+   ctx_i.width = window.innerWidth;
+   ctx_i.height = window.innerHeight;
+   this.ctx = ctx_i
   },
+  methods: {
+    startPosition(e){
+      this.painting = true;
+      this.draw(e)
+    },
+    draw(e){
+      if(!this.painting) return
+      this.ctx.lineWidth = 10;
+      this.ctx.lineCap = 'round';
+      this.ctx.strokeStyle = this.color;
+      this.ctx.lineTo(e.clientX, e.clientY);
+      this.ctx.stroke();
+      this.ctx.beginPath();
+      this.ctx.moveTo(e.clientX, e.clientY);
+    },
+    finishedPosition(){
+      this.painting = false;
+      this.ctx.beginPath();
+    }
+  }
 }
 </script>
 <style>
-#canvas {
-  background-color: rgb(0, 0, 0);
+.color-container {
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 </style>

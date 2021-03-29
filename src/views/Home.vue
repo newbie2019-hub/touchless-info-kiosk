@@ -47,8 +47,14 @@
 import { Swiper } from "vue2-swiper";
 export default {
   name: "Home",
+  created() {
+    
+  },
   components: {
     Swiper,
   },
 };
 </script>
+<style >
+
+</style>
