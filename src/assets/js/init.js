@@ -1,16 +1,17 @@
 import Handsfree from 'handsfree'
 import router from '../../router'
+
 //HANDSFREE 
 const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.95, })
 handsfree.start()
+handsfree.plugin.palmPointers.speed = {x: 2, y: 2}
+handsfree.plugin.palmPointers.offset = {x: 0, y: 0}
+
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
   // handsfree.plugin.pinchScroll.enable()
 })
 
-/**
- * Pinch Click
- */
 let mousepointer = document.querySelectorAll('.handsfree-pointer');
 
 

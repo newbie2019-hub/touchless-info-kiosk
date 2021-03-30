@@ -2,13 +2,25 @@
   <div>
     <div class="container-fluid" style="height: 100vh">
       <canvas class="drawcanvas" ref="drawcanvas" id="drawcanvas" @mousedown="startPosition" @mouseup="finishedPosition" @mousemove="draw"></canvas>
-      <div class="color-container ">
-        <div class="col">
-          <p class="text-white">Color</p>
-          <v-swatches v-model="color" shapes="circles" swatches="text-advanced" ></v-swatches>
-          <p class="text-white  mt-3">Clear</p>
-          <div class="clear" @click.prevent="clearCanvas"></div>
+      <div class="main-container ">
+        <div class="container-picker mb-3" v-tilt>
+          <div class="content">
+            <p class="text-center text-white">Color</p>
+            <v-swatches v-model="color" swatches="text-advanced" class="mb-2"></v-swatches>
+          </div>
         </div>
+        <div class="container-picker mb-3" v-tilt>
+          <div class="content">
+            <p class="text-center text-white">Clear</p>
+            <div class="clear mb-2" @click.prevent="clearCanvas" ></div>
+          </div>
+        </div>
+        <!-- <div class="container-picker">
+          <div class="content">
+            <p class="text-center text-white">Stroke</p>
+            <input type="range" class="custom-range" min="2" max="15" v-model="lineWidth" id="range">
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -23,6 +35,7 @@ export default {
       painting: false,
       ctx: '',
       color: 'white',
+      lineWidth: 8,
       swatches: [
         ['#F64272', '#F6648B', '#F493A7', '#F891A6'],
         ['#8b5aff', '#a27bff', '#b99cff', '#d0bdff'],
@@ -48,7 +61,7 @@ export default {
     },
     draw(e){
       if(!this.painting) return
-      this.ctx.lineWidth = 10;
+      this.ctx.lineWidth = this.lineWidth;
       this.ctx.lineCap = 'round';
       this.ctx.strokeStyle = this.color;
       this.ctx.lineTo(e.clientX, e.clientY);
@@ -67,14 +80,31 @@ export default {
 }
 </script>
 <style>
-.color-container {
-  width: 200px;
-  height: calc(100vh - 10%);
+.main-container {
+  width: 15%;
+  height: auto;
   position: fixed;
   right: 0;
-  top: 0;
-  display: flex;
+  top: 25%;
+  display: block;
   align-items: center;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container-picker {
+  /* border: 1px solid white; */
+  box-shadow: 1px 2px 15px #bd3b8b9d;
+  border-radius: 5px;
+  height: 100px;
+  width: 50%;
+  position: relative;
+  z-index: -999;
 }
 
 .clear {
