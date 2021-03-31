@@ -15,6 +15,7 @@ p {
   bottom: 15px;
   width: 180px;
   height: 150px;
+  transform: scaleX(-1);
 }
 
 .handsfree-video {
@@ -39,7 +40,6 @@ p {
   display: none;
   animation: rotating 2s linear infinite;
 }
-
 
 .handsfree-video {
   position: fixed !important;

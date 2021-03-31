@@ -1,14 +1,42 @@
 import Handsfree from 'handsfree'
 import router from '../../router'
+import Vue from 'vue';
 
 //HANDSFREE 
-const handsfree = new Handsfree({ hands: { enabled: true, maxNumHands: 1 }, showDebug: false, minDetectionConfidence: 0.95, })
+const handsfree = new Handsfree({ 
+  hands: { 
+    enabled: true, 
+    maxNumHands: 1, 
+    showDebug: true, 
+    minDetectionConfidence: 0.80, 
+    assetsPath: `${window.location.origin}/assets`,
+  },   
+})
+
 handsfree.start()
 handsfree.plugin.palmPointers.speed = {x: 2, y: 2}
 handsfree.plugin.palmPointers.offset = {x: 0, y: 0}
 
+let toastid = null
+
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
+  if(!handsfree.data.hands.multiHandLandmarks) {
+    if(toastid == null) return
+    Vue.$toast.dismiss(toastid)
+    toastid = null
+    return
+  }
+  
+  if(handsfree.data.hands.multiHandedness[0].label == 'Right') {    
+    if(toastid != null) return
+    toastid = Vue.$toast('Please use your right hand idiot!', {timeout: false})
+  }
+  else {
+    Vue.$toast.dismiss(toastid)
+    toastid = null
+  }
+
   // handsfree.plugin.pinchScroll.enable()
 })
 

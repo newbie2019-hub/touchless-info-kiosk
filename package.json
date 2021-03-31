@@ -18,6 +18,7 @@
     "vue-snap": "^1.0.0-alpha.5",
     "vue-swatches": "^2.1.1",
     "vue-tilt.js": "^1.1.1",
+    "vue-toastification": "^1.7.11",
     "vue2-swiper": "0.0.13"
   },
   "devDependencies": {
