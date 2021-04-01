@@ -43,7 +43,7 @@ p {
 
 .handsfree-video {
   position: fixed !important;
-  right: 15px;
+  right: 0px;
   bottom: 0px;
   width: 180px;
   height: 150px;
@@ -63,15 +63,12 @@ p {
   }
 } 
 
-@keyframes pulse {
+@keyframes rotate {
   0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
+    filter: hue-rotate(0deg);
   }
   100% {
-    transform: scale(1);
+    filter: hue-rotate(360deg);
   }
 }
 
@@ -151,4 +148,9 @@ p {
 
 .VueCarousel-dot--active {
   background-color: #ffd152 !important;
+}
+
+/** VUE TOASTIFICATION */
+.Vue-Toastification__toast--default {
+  background-color: rgba(25, 118, 210, 0.816) !important;
 }

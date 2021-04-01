@@ -17,31 +17,50 @@ handsfree.start()
 handsfree.plugin.palmPointers.speed = {x: 2, y: 2}
 handsfree.plugin.palmPointers.offset = {x: 0, y: 0}
 
-let toastid = null
+let toast_lefthand_id = null
+let toast_nohand_id = null
 
 handsfree.use('logger', () => {
   handsfree.enablePlugins('browser')
   if(!handsfree.data.hands.multiHandLandmarks) {
-    if(toastid == null) return
-    Vue.$toast.dismiss(toastid)
-    toastid = null
+
+    if(toast_nohand_id == null) {
+      toast_nohand_id = Vue.$toast('No Hands Detected!', {timeout: false})
+    }  
+
+    if(toast_lefthand_id == null) return
+
+    Vue.$toast.dismiss(toast_lefthand_id)
+    toast_lefthand_id = null
     return
-  }
+  } 
   
-  if(handsfree.data.hands.multiHandedness[0].label == 'Right') {    
-    if(toastid != null) return
-    toastid = Vue.$toast('Please use your right hand idiot!', {timeout: false})
+  if(handsfree.data.hands.multiHandedness[0].label == 'Right') {   
+    closeNoHandsToast() 
+    if(toast_lefthand_id != null) return
+    toast_lefthand_id = Vue.$toast('Please use your right hand. Some features might not work properly', {timeout: false})
   }
   else {
-    Vue.$toast.dismiss(toastid)
-    toastid = null
+    closeNoHandsToast() 
+    Vue.$toast.dismiss(toast_lefthand_id)
+    toast_lefthand_id = null
   }
 
   // handsfree.plugin.pinchScroll.enable()
 })
 
-let mousepointer = document.querySelectorAll('.handsfree-pointer');
+function closeNoHandsToast(){
+  if(toast_nohand_id == null) return
+  Vue.$toast.dismiss(toast_nohand_id)
+  toast_nohand_id = null
+}
 
+/**
+ * ---------------------
+ *  MOUSE POINTER CUSTOM
+ * ---------------------
+ */
+let mousepointer = document.querySelectorAll('.handsfree-pointer');
 
 if(mousepointer){
   for (let i = 1; i < mousepointer.length; i++) {
@@ -133,15 +152,8 @@ handsfree.use('pinchClick', ({ hands }) => {
         )
       }
 
-      for (let i = 1; i < mousepointer.length; i++) {
-        mousepointer[i].style.width = '35px';
-        mousepointer[i].style.height = '35px';
-        mousepointer[i].style.padding = '8px';
-        mousepointer[i].style.borderRadius = '50%';
-        mousepointer[i].style.border = '1.5px dashed rgb(255, 255, 255)';
-        mousepointer[i].style.backgroundClip = 'content-box';
-        mousepointer[i].style.clipPath = 'none';
-      }
+      setDefaultPointer()
+
     }
     else if(pointer.isVisible){
       const $el = document.elementFromPoint(pointer.x, pointer.y)
@@ -197,22 +209,25 @@ handsfree.use('pinchClick', ({ hands }) => {
         
       }
 
-      for (let i = 1; i < mousepointer.length; i++) {
-        mousepointer[i].style.width = '35px';
-        mousepointer[i].style.height = '35px';
-        mousepointer[i].style.padding = '8px';
-        mousepointer[i].style.borderRadius = '50%';
-        mousepointer[i].style.border = '1.5px dashed rgb(255, 255, 255)';
-        mousepointer[i].style.backgroundClip = 'content-box';
-        mousepointer[i].style.animation = 'rotating 2s linear infinite';
-        mousepointer[i].style.clipPath = 'none';
-      }
-
+      setDefaultPointer()
 
     }
 
   })
 })
+
+function setDefaultPointer(){
+  for (let i = 1; i < mousepointer.length; i++) {
+    mousepointer[i].style.width = '35px';
+    mousepointer[i].style.height = '35px';
+    mousepointer[i].style.padding = '8px';
+    mousepointer[i].style.borderRadius = '50%';
+    mousepointer[i].style.border = '1.5px dashed rgb(255, 255, 255)';
+    mousepointer[i].style.backgroundClip = 'content-box';
+    mousepointer[i].style.animation = 'rotating 2s linear infinite';
+    mousepointer[i].style.clipPath = 'none';
+  }
+}
 
 /** 
  * ------------------------
@@ -306,6 +321,7 @@ let return_timer = null;
 let countdown = 3;
 let flag = false;
 
+let returntoast = null
 handsfree.use('return', ({ hands }) => {
   if (!hands.multiHandLandmarks) return
   
@@ -342,6 +358,7 @@ handsfree.use('return', ({ hands }) => {
     else {
       clearTimeout(return_timer)
       clearInterval(iv)
+      hideReturnToast()
       return_timer = null
       flag = false
       iv = null;
@@ -351,6 +368,8 @@ handsfree.use('return', ({ hands }) => {
 });
 
 function returnPrev(){
+  showReturnToast()
+
   if(flag) return
   
   countdown = 3;
@@ -365,10 +384,15 @@ function returnPrev(){
   }, 3000)
 }
 
-/**
- * ----------------------------
- * RETURN PREVIOUS ROUTE LAYOUT
- * ----------------------------
- */
+function showReturnToast(){
+  if (returntoast != null) return
+  returntoast = Vue.$toast('Returning to previous route', {timeout: false})
+}
 
+function hideReturnToast(){
+  if(returntoast == null) return
+  Vue.$toast.dismiss(returntoast)
+  returntoast = null
+  return
+}
 
