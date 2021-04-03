@@ -2,14 +2,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Menu from '../views/Menu.vue'
-import Entertainment from '../views/Entertainment.vue'
 import Draw from '../views/entertainment/Draw.vue'
+import Intro from '../views/Intro.vue'
+import Entertainment from '../views/Entertainment.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'Intro',
+    component: Intro
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },

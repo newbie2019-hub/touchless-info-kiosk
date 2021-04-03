@@ -5,7 +5,7 @@
         <splide-slide>
           <div class="col-md-9 col-lg-8 ">
             <p class="heading-h1 text-light-yellow mt-5">Entertainment.</p>
-            <h4 class="text-light-yellow mt-4">Pinch and swipe left to see more options. 🠔</h4>
+            <h4 class="text-light mt-4">Pinch and swipe left to see more options. 🠔</h4>
           </div>
         </splide-slide>
         <splide-slide>

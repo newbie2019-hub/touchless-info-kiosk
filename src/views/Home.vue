@@ -50,6 +50,9 @@ export default {
   created() {
     
   },
+  mounted() {
+
+  },
   components: {
     Swiper,
   },

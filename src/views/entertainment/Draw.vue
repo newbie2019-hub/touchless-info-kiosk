@@ -99,7 +99,7 @@ export default {
 
 .container-picker {
   /* border: 1px solid white; */
-  box-shadow: 1px 2px 15px #bd3b8b9d;
+  box-shadow: 1px 2px 15px #319df5be;
   border-radius: 5px;
   height: 100px;
   width: 50%;

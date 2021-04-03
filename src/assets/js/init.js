@@ -7,16 +7,21 @@ const handsfree = new Handsfree({
   hands: { 
     enabled: true, 
     maxNumHands: 1, 
-    showDebug: true, 
     minDetectionConfidence: 0.80, 
-    assetsPath: `${window.location.origin}/assets`,
   },   
+  showDebug: false, 
+  assetsPath: `${window.location.origin}/assets`,
 })
 
-handsfree.start()
 handsfree.plugin.palmPointers.speed = {x: 2, y: 2}
 handsfree.plugin.palmPointers.offset = {x: 0, y: 0}
+handsfree.start()
 
+/* 
+ *---------------
+ * HAND NOTIF
+ *---------------
+ */
 let toast_lefthand_id = null
 let toast_nohand_id = null
 
@@ -25,7 +30,8 @@ handsfree.use('logger', () => {
   if(!handsfree.data.hands.multiHandLandmarks) {
 
     if(toast_nohand_id == null) {
-      toast_nohand_id = Vue.$toast('No Hands Detected!', {timeout: false})
+      handsfree.emit('handsShown', false)
+      toast_nohand_id = Vue.$toast('No Hand Detected.', {timeout: false})
     }  
 
     if(toast_lefthand_id == null) return
@@ -38,15 +44,15 @@ handsfree.use('logger', () => {
   if(handsfree.data.hands.multiHandedness[0].label == 'Right') {   
     closeNoHandsToast() 
     if(toast_lefthand_id != null) return
-    toast_lefthand_id = Vue.$toast('Please use your right hand. Some features might not work properly', {timeout: false})
+    toast_lefthand_id = Vue.$toast('Please use your right hand.', {timeout: false})
   }
   else {
     closeNoHandsToast() 
+    handsfree.emit('handsShown', true)
     Vue.$toast.dismiss(toast_lefthand_id)
     toast_lefthand_id = null
   }
 
-  // handsfree.plugin.pinchScroll.enable()
 })
 
 function closeNoHandsToast(){
@@ -55,11 +61,14 @@ function closeNoHandsToast(){
   toast_nohand_id = null
 }
 
+
+
 /**
  * ---------------------
  *  MOUSE POINTER CUSTOM
  * ---------------------
  */
+
 let mousepointer = document.querySelectorAll('.handsfree-pointer');
 
 if(mousepointer){
