@@ -44,18 +44,41 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 import { Swiper } from "vue2-swiper";
 export default {
   name: "Home",
+  data(){
+    return {
+      date: '',
+      time: ''
+    }
+  },
   created() {
     
   },
   mounted() {
-
+    setInterval(() =>{
+      this.currentdate()
+    }, 1000)
+    setInterval(() =>{
+      this.currenttime()
+    }, 1000)
   },
   components: {
     Swiper,
   },
+  methods: {
+    currentdate(){
+      var a = new Date();
+      this.date = moment(a).format(' MMM D[,] YYYY'); 
+    },
+    currenttime(){
+      var a = new Date();
+      this.time =  moment(a).format('hh:mm:ss A'); 
+    },
+  }
 };
 </script>
 <style >

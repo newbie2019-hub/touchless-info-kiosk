@@ -9,8 +9,12 @@ const handsfree = new Handsfree({
     maxNumHands: 1, 
     minDetectionConfidence: 0.80, 
   },   
-  showDebug: false, 
+  showDebug: true, 
   assetsPath: `${window.location.origin}/assets`,
+})
+
+document.addEventListener('handsfree-handsModelReady', (event) => {
+  handsfree.emit('handsModelLoaded', true)  
 })
 
 handsfree.plugin.palmPointers.speed = {x: 2, y: 2}
@@ -61,8 +65,6 @@ function closeNoHandsToast(){
   toast_nohand_id = null
 }
 
-
-
 /**
  * ---------------------
  *  MOUSE POINTER CUSTOM
@@ -89,8 +91,8 @@ handsfree.use('pinchClick', ({ hands }) => {
         mousepointer[i].style.width = '45px';
         mousepointer[i].style.height = '45px';
         mousepointer[i].style.padding = '8px';
-        mousepointer[i].style.animation = 'rotating 2s linear infinite';
         mousepointer[i].style.borderRadius = '50%';
+        mousepointer[i].style.animation = 'rotating 2s linear infinite';
         mousepointer[i].style.border = '1.5px dashed rgb(255, 255, 255)';
         mousepointer[i].style.backgroundClip = 'content-box';
         mousepointer[i].style.clipPath = 'none';
@@ -329,7 +331,7 @@ let iv = null //interval
 let return_timer = null;
 let countdown = 3;
 let flag = false;
-
+let cantreturntoast = null
 let returntoast = null
 handsfree.use('return', ({ hands }) => {
   if (!hands.multiHandLandmarks) return
@@ -343,6 +345,17 @@ handsfree.use('return', ({ hands }) => {
 
   if(hands.gesture[1] != null){
     if(hands.gesture[1].name == 'return') {
+
+      //If path is / return immediately
+      if(window.location.pathname == '/') {
+        if(cantreturntoast != null) return 
+        cantreturntoast = Vue.$toast('Previous route is not available. Proceed first to the main menu', {timeout: 2500})
+        setTimeout(() => {
+          cantreturntoast = null
+        }, 2600)
+        return
+      }
+
       returnPrev()
       flag = true
       for (let i = 1; i < mousepointer.length; i++) {
@@ -384,8 +397,7 @@ function returnPrev(){
   countdown = 3;
 
   iv = window.setInterval(() => {
-    countdown--;
-    console.log(countdown)
+    countdown--
   }, 1000)
 
   return_timer = window.setTimeout(()=>{

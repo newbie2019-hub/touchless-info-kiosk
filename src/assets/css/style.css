@@ -3,6 +3,7 @@
 body {
   font-family: 'Open Sans', sans-serif !important;
   background-color: #000 !important;
+  cursor: none;
 }
 
 p {
@@ -38,29 +39,34 @@ p {
 
 .handsfree-video {
   position: fixed !important;
-  right: 15px;
-  bottom: 0px;
+  right: 20px;
+  bottom: 20px;
   width: 180px;
-  height: 160px;
-  filter: brightness(70%);
+  height: auto;
+  border: 1px solid white;
+  filter: brightness(40%);
+  transform: scaleX(-1);
 }
 
-.handsfree-canvas .handsfree-canvas-video .handsfree-hide-when-started-without-video {
+.handsfree-canvas {
   position: fixed !important;
-  right: 0px;
-  bottom: 0px;
+  right: 20px;
+  bottom: 20px;
   width: 180px;
-  height: 150px;
+  height: auto;
   filter: brightness(70%);
+  transform: scaleX(-1);
+  border: 1px solid white;
 }
 
 #handsfree-canvas-hands-1 {
   position: fixed !important;
-  right: 0px;
-  bottom: 0px;
+  right: 20px;
+  bottom: 20px;
   width: 180px;
-  height: 150px;
+  height: auto;
   filter: brightness(70%);
+  transform: scaleX(-1);
 }
 
 .swiper .swiper-pagination .swiper-pagination-bullet {
