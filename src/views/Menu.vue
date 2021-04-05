@@ -1,46 +1,38 @@
 <template>
-  <div class="container-fluid d-flex align-items-center p-0 m-0" style="height: 100vh; background: #000">
-    <div class="" style="padding-top: 15%;">
-      <splide :options="options">
-        <splide-slide>
-          <div class="col-md-9 col-lg-10">
-            <p class="heading-h1 text-light-yellow mt-5">Menu.</p>
-            <h4 class="text-light mt-4">Pinch and swipe left to see more options. 🠔</h4>
+  <div>
+    <div class="container align-items-center m-0" style="height: 100vh; padding: 2rem 4rem 0px 4rem; overflow-y: hidden; background: #000" @mousedown.left="onMouseDown">
+      <div class="row justify-content-center d-block text-center">
+        <p class="heading-h1 text-light-yellow mt-3 mb-1">Main Menu</p>
+        <h5 class="text-light">Pinch and swipe left to see more options</h5>
+      </div>
+      <vue-horizontal responsive ref="horizontal" :button="false" snap="none" @scroll="onScroll" class="pt-2">
+        <div class="card" v-tilt>
+          <div class="card_image"> <img src="@/assets/images/entertainment.png" /> </div>
+          <div class="card_title title-white">
+             <router-link to="/entertainment">Entertainment</router-link>
           </div>
-        </splide-slide>
-        <splide-slide>
-          <div class="card" v-tilt="{perspective: 800,}">
-            <img src="@/assets/images/entertainment.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <router-link to="/entertainment"><h2 class="card-title">Entertainment</h2></router-link>
+        </div>
+        <div class="card" v-tilt>
+          <div class="card_image"> <img src="@/assets/images/tutorial-hand.jpg" /> </div>
+          <div class="card_title title-white">
+            <p>Tutorial</p>
           </div>
-        </splide-slide>
-        <splide-slide>
-           <div class="card" v-tilt="{perspective: 800}">
-            <img src="@/assets/images/covid19.png" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-           <h2 class="card-title">Covid-19</h2>
+        </div>
+        <div class="card" v-tilt>
+          <div class="card_image"> <img src="@/assets/images/img-three.jpeg" /> </div>
+          <div class="card_title title-white">
+            <p>Demo 3</p>
           </div>
-        </splide-slide>
-        <splide-slide>
-          <div class="card" v-tilt="{perspective: 800}">
-            <img src="@/assets/images/img-two.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <h1 class="card-title">Demo 3</h1>
+        </div>
+        <div class="card" v-tilt>
+          <div class="card_image"> <img src="@/assets/images/img-two.jpeg" /> </div>
+          <div class="card_title title-white">
+            <p>Feedback</p>
           </div>
-        </splide-slide>
-        <splide-slide>
-          <div class="card" v-tilt="{perspective: 800}">
-            <img src="@/assets/images/img-three.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <h1 class="card-title">Demo 4</h1>
-          </div>
-        </splide-slide>
-        <splide-slide>
-          <div class="card" v-tilt="{perspective: 800}">
-            <img src="@/assets/images/img-one.jpeg" class="card-img-top" alt="..." style="max-height: 380px; object-fit: cover;">
-            <h1 class="card-title">Demo 5</h1>
-          </div>
-        </splide-slide>
-      </splide>
+        </div>
+      </vue-horizontal>   
+      <p class="info-text">Tap the text to select the card.</p>
     </div>
-    <p class="info-text">Tap the text to select the card.</p>
   </div>
 </template>
 <script>
@@ -52,43 +44,66 @@ export default {
   },
   data() {
     return {
-      options: {
-        rewind : false,
-        width  : '100vw',
-        height: '100vh',
-        autoWidth: true,
-        perPage: 2,
-        gap    : '3rem',
-        padding: '6rem',
-        pagination: false,
-        arrows: false,
-      },
+      left: 0,
+      originX: 0,
+      originLeft: 0,
     }
   },
   mounted() {
     document.title = "Main Menu";
   },
-  methods: {}
+  methods: {
+    onScroll({left}) {
+      this.left = left
+    },
+    onMouseDown(e) {
+      this.originX = e.pageX
+      this.originLeft = this.left
+
+      window.addEventListener("mouseup", this.onMouseUp);
+      window.addEventListener("mousemove", this.onMouseMove);
+    },
+    onMouseUp() {
+      window.removeEventListener("mouseup", this.onMouseUp);
+      window.removeEventListener("mousemove", this.onMouseMove);
+    },
+    onMouseMove(e) {
+      const offset = e.pageX - this.originX
+      const left = this.originLeft - offset
+      this.$refs.horizontal.scrollToLeft(left, 'auto')
+    }
+  },
+  destroyed() {
+    this.onMouseUp()
+  },
    
 };
 </script>
 <style scoped>
-  a{ 
-    color: white;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-  a:focus {
-    text-decoration: none;
-  }
-  .info-text {
-    position: fixed;
-    bottom: 4%;
-    left: 3%;
-    color: rgb(170, 170, 170);
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
-  }
+a { 
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(182, 182, 182);
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 100% !important;
+}
+
+.info-text {
+  position: fixed;
+  bottom: 4%;
+  left: 3%;
+  color: rgb(170, 170, 170);
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
   
 </style>

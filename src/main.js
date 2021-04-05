@@ -3,18 +3,17 @@ import App from './App.vue'
 import router from './router'
 import VueTilt from 'vue-tilt.js'
 import Toast from "vue-toastification";
-import VueSplide from '@splidejs/vue-splide';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VueHorizontal from 'vue-horizontal';
 
 import '@/assets/js/init.js'
 import '@/assets/css/style.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import "vue-toastification/dist/index.css";
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 
-Vue.use(VueSplide);
 Vue.use(VueTilt)
+Vue.use(VueHorizontal);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Toast, {
