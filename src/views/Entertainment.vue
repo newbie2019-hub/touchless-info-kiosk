@@ -21,7 +21,7 @@
         <div class="card" v-tilt>
           <div class="card_image"> <img src="@/assets/images/img-three.jpeg" /> </div>
           <div class="card_title title-white">
-            <p>Demo 3</p>
+            <p>Hand</p>
           </div>
         </div>
         <div class="card" v-tilt>
