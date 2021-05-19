@@ -47,7 +47,7 @@ p {
   bottom: 20px;
   width: 180px;
   height: auto;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   filter: brightness(40%);
   transform: scaleX(-1);
 }
@@ -60,7 +60,7 @@ p {
   height: auto;
   filter: brightness(70%);
   transform: scaleX(-1);
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 #handsfree-canvas-hands-1 {
@@ -134,7 +134,7 @@ p {
   color: white;
 }
 
-img {
+.kiosk-img {
   -webkit-box-reflect: below 1px linear-gradient(rgba(0, 0, 0, 0.212), rgba(0, 0, 0, 0.24));
 }
 

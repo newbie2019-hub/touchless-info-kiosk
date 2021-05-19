@@ -16,6 +16,24 @@
     padding: 20px 25px;
 }
 
+.reg-card{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4.0px );
+    -webkit-backdrop-filter: blur( 4.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    /* height: 100%; */
+    width: 380px !important;
+    position: relative;
+    padding: 20px 25px;
+}
+
+.reg-card h2{
+    font-weight: bold;
+    color: white;
+}
+
 h1{
     color: white;
 }
@@ -51,7 +69,8 @@ a{
 }
 
 .form-control::placeholder{
-    color: white !important;
+    color: rgb(197, 194, 194) !important;
+    font-size: .9rem !important;
 }
 
 .form-control:focus {
@@ -74,5 +93,27 @@ a{
     color: white !important;
     font-weight: lighter;
     padding-top: 12px !important;
-    letter-spacing: 1px;
+    font-size: .9rem;
+}
+
+.form-select:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.form-select{
+    background-color: rgba( 255, 255, 255, 0 ) !important;
+    border: none !important;
+    border-bottom: 1px solid white !important;
+    color: white !important;
+    font-size: .9rem !important;
+    border-radius: 0 !important;
+}
+
+.custom-select{
+    background: rgb(255, 255, 255, 0) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23fff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat !important;
+}
+
+.form-select option{
+    color: black !important;
 }

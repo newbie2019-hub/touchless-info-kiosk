@@ -6,6 +6,7 @@ import Draw from '../views/entertainment/Draw.vue'
 import Intro from '../views/Intro.vue'
 import Entertainment from '../views/Entertainment.vue'
 import Login from '../views/admin/auth/Login.vue'
+import Register from '../views/admin/auth/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
   }
 ]
 

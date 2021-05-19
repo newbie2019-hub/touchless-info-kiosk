@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import VueTilt from 'vue-tilt.js'
 import Toast from "vue-toastification";
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue'
 import VueHorizontal from 'vue-horizontal';
 
 import '@/assets/js/init.js'
@@ -14,6 +14,7 @@ import "vue-toastification/dist/index.css";
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueTilt)
+Vue.use(BootstrapVueIcons)
 Vue.use(VueHorizontal);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
