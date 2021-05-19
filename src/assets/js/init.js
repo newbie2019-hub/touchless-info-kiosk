@@ -9,7 +9,7 @@ const handsfree = new Handsfree({
     maxNumHands: 1, 
     minDetectionConfidence: 0.80, 
   },   
-  showDebug: true, 
+  showDebug: false, 
   assetsPath: `${window.location.origin}/assets`,
 })
 
@@ -19,7 +19,7 @@ document.addEventListener('handsfree-handsModelReady', (event) => {
 
 handsfree.plugin.palmPointers.speed = {x: 2, y: 2}
 handsfree.plugin.palmPointers.offset = {x: 0, y: 0}
-handsfree.start()
+// handsfree.start()
 
 /* 
  *---------------
@@ -44,7 +44,7 @@ handsfree.use('logger', () => {
     toast_lefthand_id = null
     return
   } 
-  
+
   if(handsfree.data.hands.multiHandedness[0].label == 'Right') {   
     closeNoHandsToast() 
     if(toast_lefthand_id != null) return
@@ -56,6 +56,7 @@ handsfree.use('logger', () => {
     Vue.$toast.dismiss(toast_lefthand_id)
     toast_lefthand_id = null
   }
+  
 
 })
 

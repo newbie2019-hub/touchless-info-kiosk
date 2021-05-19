@@ -8,6 +8,7 @@ import VueHorizontal from 'vue-horizontal';
 
 import '@/assets/js/init.js'
 import '@/assets/css/style.css'
+import '@/assets/css/admin.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import "vue-toastification/dist/index.css";
 import 'bootstrap-vue/dist/bootstrap-vue.css'
